@@ -7,6 +7,10 @@ SimpleLed::SimpleLed(void)
 
 SimpleLed::SimpleLed(const int pin, const int onLevel)
 {
+  if (_pin <= 0) {
+    return;
+  }
+
   _pin = pin;
   _onLevel = (onLevel == LOW) ? (LOW) : (HIGH);
 
@@ -22,22 +26,22 @@ void SimpleLed::setState(const LedState state, const int blinkIntervalMs)
     return;
   }
 
-  if (LED_BLINK == state) {
+  if (BLINK == state) {
     _blinkIntervalMs = blinkIntervalMs;
-    _ledState = LED_BLINK;
+    _ledState = BLINK;
     outLevel = (_onLevel == HIGH) ? (HIGH) : (LOW);
     digitalWrite(_pin, outLevel);
     _lastLedBlinkMs = millis();
     _nowLevel = outLevel;
-  } else if (LED_ON == state) {
+  } else if (ON == state) {
     outLevel = (_onLevel == HIGH) ? (HIGH) : (LOW);
     digitalWrite(_pin, outLevel);
-    _ledState = LED_ON;
+    _ledState = ON;
   } else {
     // turn off LED
     outLevel = (_onLevel == HIGH) ? (LOW) : (HIGH);
     digitalWrite(_pin, outLevel);
-    _ledState = LED_OFF;
+    _ledState = OFF;
   }
 
   return;
@@ -53,7 +57,7 @@ void SimpleLed::update(void)
   unsigned long nowMs = 0;
   int outLevel = 0;
 
-  if (_ledState != LED_BLINK) {
+  if (_ledState != BLINK) {
     return;
   }
   
