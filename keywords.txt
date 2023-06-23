@@ -1,0 +1,20 @@
+#######################################
+# Data types (KEYWORD1)
+#######################################
+SimpleLed	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+SimpleLed	KEYWORD2
+setState	KEYWORD2
+getState	KEYWORD2
+update	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+LedState	LITERAL1
+OFF	LITERAL1
+ON	LITERAL1
+BLINK	LITERAL1
