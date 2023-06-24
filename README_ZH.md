@@ -1,5 +1,7 @@
 # SimpleLed
 
+[English](./README.md) | [中文](./README_ZH.md)
+
 `SimpleLed` 是一个 Arduino 库，它的功能是控制 LED 亮、灭和闪烁。这是一个特别简单的项目，想要在不使用阻塞式延时的情况下能够控制 LED 进行闪烁。
 
 ## 使用说明

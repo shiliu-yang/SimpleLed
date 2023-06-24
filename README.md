@@ -1,5 +1,7 @@
 # SimpleLed
 
+[English](./README.md) | [中文](./README_ZH.md)
+
 `SimpleLed` is an Arduino library that controls the on, off, and blink functions of LEDs. It's a particularly simple project that aims to control LED blinking without using blocking delays.
 
 ## Get start
