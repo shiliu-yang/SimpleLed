@@ -1,50 +1,52 @@
 # SimpleLed
 
-`SimpleLed` 是一个 Arduino 库，它的功能是控制 LED 亮、灭和闪烁。这是一个特别简单的项目，想要在不使用阻塞式延时的情况下能够控制 LED 进行闪烁。
+[English](./README.md) | [中文](./README_ZH.md)
 
-## 使用说明
+`SimpleLed` is an Arduino library that controls the on, off, and blink functions of LEDs. It's a particularly simple project that aims to control LED blinking without using blocking delays.
 
-你需要在你项目中包含 `SimpleLed.h`：
+## Get start
+
+You need to include `SimpleLed.h` in your project.
 ```cpp
 #include "SimpleLed.h"
 ```
 
-### 如何初始化
-在对 LED 引脚进行初始化之后，会默认将 LED 设置关闭状态。
+### How to initialize
+After initializing the LED pin, the LED will be set to the off state by default.
 
-当引脚输出为高电平时点亮 LED：
+To turn on the LED when the pin output is high:
 ```cpp
 #define LED_PIN LED_BUILTIN
 
 SimpleLed led(LED_PIN);
 ```
-或者：
+Or:
 ```cpp
 #define LED_PIN LED_BUILTIN
 
 SimpleLed led(LED_PIN, HIGH);
 ```
 
-当引脚输出为低电平时点亮 LED：
+To turn on the LED when the pin output is low:
 ```cpp
 #define LED_PIN LED_BUILTIN
 
 SimpleLed led(LED_PIN, LOW);
 ```
 
-### 如何控制 LED
+### How to control the LED
 
-点亮 LED：
+Turn on the LED:
 ```cpp
     led.setState(SimpleLed::LedState::ON);
 ```
 
-关闭 LED：
+Turn off the LED:
 ```cpp
     led.setState(SimpleLed::LedState::OFF);
 ```
 
-LED 每 1s 切换一次状态（亮-1s->灭-1s->亮->...），需要在 loop() 中调用 update()：
+The LED switches state every 1s (on-1s->off-1s->on ->...) and you need to call update() in loop():
 ```cpp
 void setup() {
     led.setState(SimpleLed::LedState::BLINK, 1000);
