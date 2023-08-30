@@ -7,7 +7,7 @@ SimpleLed::SimpleLed(void)
 
 SimpleLed::SimpleLed(const int pin, const int onLevel)
 {
-  if (_pin <= 0) {
+  if (pin <= 0) {
     return;
   }
 
@@ -25,6 +25,8 @@ void SimpleLed::setState(const LedState state, const int blinkIntervalMs)
   if (_pin <= 0) {
     return;
   }
+
+
 
   if (BLINK == state) {
     _blinkIntervalMs = blinkIntervalMs;
