@@ -26,7 +26,9 @@ void SimpleLed::setState(const LedState state, const int blinkIntervalMs)
     return;
   }
 
-
+  if (_ledState == state && _blinkIntervalMs == blinkIntervalMs) {
+    return;
+  }
 
   if (BLINK == state) {
     _blinkIntervalMs = blinkIntervalMs;
