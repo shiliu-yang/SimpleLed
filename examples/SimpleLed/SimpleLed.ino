@@ -7,15 +7,23 @@ SimpleLed led(LED_PIN, HIGH);
 
 void setup() {
   // Trun on LED
-  led.setState(SimpleLed::LedState::ON);
-  delay(1000);
+  led.on();
+  delay(3000);
 
   // Trun off LED
-  led.setState(SimpleLed::LedState::OFF);
-  delay(1000);
+  led.off();
+  delay(3000);
+
+  // Trun on LED
+  led.setState(1);
+  delay(3000);
+
+  // Trun off LED
+  led.setState(0);
+  delay(3000);
 
   // LED blinking, status switching every 500ms
-  led.setState(SimpleLed::LedState::BLINK, 500);
+  led.blink(500);
 }
 
 void loop() {

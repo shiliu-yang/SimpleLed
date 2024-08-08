@@ -2,6 +2,10 @@
 
 #include <Arduino.h>
 
+extern "C" {
+#include <stdint.h>
+}
+
 class SimpleLed
 {
 public:
@@ -26,7 +30,45 @@ public:
    * @param blinkIntervalMs LED state change time (ms) when the LED is blinking.
    *                When the LED is blinking, update() needs to be called periodically.
    */
-  void setState(const LedState state, const int blinkIntervalMs=500);
+  void setState(const LedState state, const uint16_t blinkIntervalMs);
+
+  void setState(const LedState state)
+  {
+    setState(state, _blinkIntervalMs);
+  }
+
+  void setState(const uint8_t state, const uint16_t blinkIntervalMs);
+
+  void setState(const uint8_t state)
+  {
+    setState(state, _blinkIntervalMs);
+  }
+
+  /**
+   * LED on
+   */
+  void on(void)
+  {
+    setState(LedState::ON, _blinkIntervalMs);
+  }
+
+  /**
+   * LED off
+   */
+  void off(void)
+  {
+    setState(LedState::OFF, _blinkIntervalMs);
+  }
+
+  /**
+   * LED blink
+   * @param blinkIntervalMs LED state change time (ms) when the LED is blinking.
+   *                When the LED is blinking, update() needs to be called periodically.
+   */
+  void blink(const uint16_t blinkIntervalMs)
+  {
+    setState(LedState::BLINK, blinkIntervalMs);
+  }
 
   /**
    * When the LED is blinking,
@@ -44,7 +86,7 @@ private:
   int _onLevel = HIGH;
   LedState _ledState = OFF;
 
-  int _blinkIntervalMs = 500;
+  uint16_t _blinkIntervalMs = 500;
   int _nowLevel = LOW;
   unsigned long _lastLedBlinkMs = 0;
 };
