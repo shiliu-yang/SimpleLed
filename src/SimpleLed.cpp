@@ -18,7 +18,7 @@ SimpleLed::SimpleLed(const int pin, const int onLevel)
   digitalWrite(pin, (_onLevel == HIGH) ? (LOW) : (HIGH));
 }
 
-void SimpleLed::setState(const LedState state, const int blinkIntervalMs)
+void SimpleLed::setState(const LedState state, const uint16_t blinkIntervalMs)
 {
   int outLevel = 0;
 
@@ -49,6 +49,20 @@ void SimpleLed::setState(const LedState state, const int blinkIntervalMs)
   }
 
   return;
+}
+
+void SimpleLed::setState(const uint8_t state, const uint16_t blinkIntervalMs)
+{
+  LedState tmpState = OFF;
+
+  if (1 == state) {
+    tmpState = ON;
+  } else if (2 == state) {
+    tmpState = BLINK;
+  } else {
+    tmpState = OFF;
+  }
+  setState(tmpState, blinkIntervalMs);
 }
 
 SimpleLed::LedState SimpleLed::getState(void)
