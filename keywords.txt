@@ -9,6 +9,9 @@ SimpleLed	KEYWORD1
 SimpleLed	KEYWORD2
 setState	KEYWORD2
 getState	KEYWORD2
+on	KEYWORD2
+off	KEYWORD2
+blink	KEYWORD2
 update	KEYWORD2
 
 #######################################
